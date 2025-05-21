@@ -17,8 +17,13 @@ public class Main {
         csb.deleteCharAt(2);
         System.out.println(csb);
 
+        System.out.println("Изменение");
+        csb.deleteCharAt(4);
+        System.out.println(csb);
+
         System.out.println("Восстановление");
         createMemento.undo();
         System.out.println(csb);
+
     }
 }

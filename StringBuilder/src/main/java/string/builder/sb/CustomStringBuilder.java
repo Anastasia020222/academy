@@ -3,8 +3,6 @@ package string.builder.sb;
 import string.builder.memento.IMemento;
 import string.builder.memento.Memento;
 
-import java.util.Arrays;
-
 public class CustomStringBuilder implements ICustomStringBuilder { //основной объект Originator
 
     private char[] value;
@@ -74,7 +72,7 @@ public class CustomStringBuilder implements ICustomStringBuilder { //основ�
     }
 
     public void restore(IMemento iMemento) {
-        this.value = Arrays.copyOf(iMemento.getState(), iMemento.getState().length);
+        this.value = iMemento.getState();
         this.count = iMemento.getCount();
     }
 

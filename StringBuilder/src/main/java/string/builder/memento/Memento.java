@@ -1,20 +1,18 @@
 package string.builder.memento;
 
-import java.util.Arrays;
+public class Memento implements IMemento { //хранить внутреннее состояние
 
-public class Memento implements IMemento {
-
-    private final char[] state;
+    private final char[] mass;
     private final int count;
 
-    public Memento(char[] state, int count) {
-        this.state = Arrays.copyOf(state, state.length);
+    public Memento(char[] mass, int count) {
+        this.mass = mass.clone();
         this.count = count;
     }
 
     @Override
     public char[] getState() {
-        return Arrays.copyOf(state, state.length);
+        return mass.clone();
     }
 
     @Override

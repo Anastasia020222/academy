@@ -4,9 +4,9 @@ import string.builder.sb.CustomStringBuilder;
 
 import java.util.Stack;
 
-public class CreateMemento { //хранение истории состояний
+public class CreateMemento { //хранение истории состояний, отмена изменений
 
-    private final Stack<IMemento> history;
+    private final Stack<Memento> history;
     CustomStringBuilder customStringBuilder;
 
     public CreateMemento(CustomStringBuilder getCustomStringBuilder) {
@@ -19,9 +19,10 @@ public class CreateMemento { //хранение истории состояни�
     }
 
     public void undo() {
-        if (history.isEmpty()) {
-            return;
+        if (!history.isEmpty()) {
+            customStringBuilder.restore(history.pop());
+        } else {
+            System.out.println("Нечего откатывать.");
         }
-        customStringBuilder.restore(history.pop());
     }
 }
