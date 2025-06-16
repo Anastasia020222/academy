@@ -1,0 +1,16 @@
+{
+  "fields": [
+    {
+      "$type": "StateIssueCustomField",
+      "id": "170-4003",
+      "value": {
+        "kind": "enum",
+        "id": "150-15",
+        "name": "Not status",
+        "label": "Not status",
+        "description": null,
+        "isResolved": false
+      }
+    }
+  ]
+}
