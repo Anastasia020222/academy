@@ -1,0 +1,8 @@
+{
+  "$type": "Tag",
+  "name": "new_tag_api_2",
+  "color": {
+    "$type": "FieldStyle",
+    "id": "1"
+  }
+}
