@@ -15,7 +15,7 @@
 
         <browser>chrome</browser>
         <versionBrowser>137.0</versionBrowser>
-        <base.url>http://193.233.193.42:9091</base.url>
+        <base.url>http://указать_домен</base.url>
 
         <selenium.version>4.8.3</selenium.version>
         <lombok>1.18.38</lombok>

@@ -14,8 +14,6 @@ public class ApiRequest extends AbsRequestSpec {
 
     private final String url = System.getProperty("base.url");
     private static final String ISSUES_PATH = "/api/issues";
-
-    private final String token = "perm-0JDQvdCw0YHRgtCw0YHQuNGPX9Cb0YvRgdC10L3QutC+.NDQtMTQ=.ZG0Qk5IZy2cYJB024uAgj0kdF52IeR";
     public static final ThreadLocal<Task> task = new ThreadLocal<>();
 
     public void createTask() {

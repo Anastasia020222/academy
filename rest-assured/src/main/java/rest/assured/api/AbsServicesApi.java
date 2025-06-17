@@ -8,7 +8,7 @@ import static rest.assured.utils.Token.extractToken;
 public abstract class AbsServicesApi {
 
     private static final String BASE_URL = System.getProperty("base.url");
-    private static final String pathToken = "src/main/resources/token.json";
+    private static final String pathToken = "src/main/resources/token.json";//создать файл с токеном в /resources в формате {token: test}
 
     protected final RequestSpecification spec = new RequestSpecBuilder()
             .setBaseUri(BASE_URL)
