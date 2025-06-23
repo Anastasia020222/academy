@@ -14,7 +14,7 @@ public class AuthHelper {
     public void loginWithLocalStorageToken() {
         open("");
         LocalStorage localStorage = Selenide.localStorage();
-        localStorage.setItem("cf6f74d5-c1b8-457f-9d4b-2348fe19440f-token", readTokenJson());
+        localStorage.setItem("token", readTokenJson());
         Selenide.refresh();
     }
 
