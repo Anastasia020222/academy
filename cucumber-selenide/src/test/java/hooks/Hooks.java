@@ -22,7 +22,7 @@ public class Hooks {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 15000;
         Configuration.screenshots = true;
-        Configuration.baseUrl = "http://193.233.193.42:9091";
+        Configuration.baseUrl = "http://добавить домен проекта";
         authHelper.loginWithLocalStorageToken();
     }
 
