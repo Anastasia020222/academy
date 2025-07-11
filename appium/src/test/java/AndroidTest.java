@@ -23,7 +23,7 @@ public class AndroidTest {
     }
 
     @Test
-    @DisplayName("Проверяет, что в popup menu можно выбрать категорию 'Add'")
+    @DisplayName("Проверяем, что в popup menu можно выбрать категорию 'Add'")
     void testCategoryNavigation() {
         new MainPage(androidDriver)
                 .goViewsPage()

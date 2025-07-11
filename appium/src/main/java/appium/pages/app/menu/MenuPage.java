@@ -1,13 +1,9 @@
 package appium.pages.app.menu;
 
-import appium.Driver;
 import appium.pages.AbsBasePage;
 import io.appium.java_client.android.AndroidDriver;
-import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import java.awt.*;
 
 import static appium.utils.Constants.TEXT_MENU_PAGE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,7 +33,6 @@ public class MenuPage extends AbsBasePage {
         inflateFromXML.click();
         assertTrue(selectField.isDisplayed(), "Поле выпадающего списка не отобразилось");
         String actualSelectText = selectField.getText();
-        System.out.println("до " + actualSelectText);
         assertEquals(actualSelectText, "Title only", "По умолчанию в поле выпадающего меню указан не тот текст");
         String text = textMenuPage.getText();
         assertEquals(text, TEXT_MENU_PAGE, "Текст на странице выпадающего меню неверный");
@@ -53,7 +48,6 @@ public class MenuPage extends AbsBasePage {
 
     public MenuPage checkSelectedOptionsVisible() {
         String actualSelectText = selectField.getText();
-        System.out.println("после " + actualSelectText);
         assertEquals(actualSelectText, "Visible", "В поле выпадающего меню опция не изменилась на Visible");
         return this;
     }
