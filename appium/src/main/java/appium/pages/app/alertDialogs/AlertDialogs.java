@@ -16,31 +16,28 @@ public class AlertDialogs extends AbsBasePage {
         super(androidDriver);
     }
 
-    @FindBy(xpath = "//android.widget.Button[@content-desc=\"List dialog\"]")
+    @FindBy(xpath = "//android.widget.Button[@content-desc='List dialog']")
     private WebElement listDialogs;
 
-    @FindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"android:id/parentPanel\"]")
+    @FindBy(xpath = "//android.widget.LinearLayout[@resource-id='android:id/parentPanel']")
     private WebElement listDialogOpen;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/alertTitle\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='android:id/alertTitle']")
     private WebElement titleListDialog;
 
-    @FindBy(xpath = "//android.widget.FrameLayout[@resource-id=\"android:id/contentPanel\"]")
+    @FindBy(xpath = "//android.widget.FrameLayout[@resource-id='android:id/contentPanel']")
     private WebElement controlPanelCommandOne;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/message\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='android:id/message']")
     private WebElement titleControlPanelCommandOne;
 
-//    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/text1\" and @text=\"Command one\"]")
-//    private WebElement commandOne;
-
     public WebElement commandOne(String command) {
-        return androidDriver.findElement(By.xpath(String.format("//android.widget.TextView[@resource-id=\"android:id/text1\" and @text=\"%s\"]", command)));
+        return androidDriver.findElement(By.xpath(String.format("//android.widget.TextView[@resource-id='android:id/text1' and @text='%s']", command)));
     }
 
     public AlertDialogs selectAlertListDialogs() {
         listDialogs.click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout[@resource-id=\"android:id/parentPanel\"]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//android.widget.LinearLayout[@resource-id='android:id/parentPanel']")));
         assertTrue(listDialogOpen.isDisplayed(), "Диалоговое окно со списком диалогов не раскрылось");
 
         String title = titleListDialog.getText();

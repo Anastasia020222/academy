@@ -1,4 +1,4 @@
-package appium;
+package appium.manager;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

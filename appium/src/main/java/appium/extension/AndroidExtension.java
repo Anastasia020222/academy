@@ -1,6 +1,6 @@
 package appium.extension;
 
-import appium.Driver;
+import appium.manager.Driver;
 import appium.manager.AndroidManager;
 import io.appium.java_client.android.AndroidDriver;
 import org.junit.jupiter.api.extension.AfterEachCallback;
@@ -25,6 +25,7 @@ public class AndroidExtension implements BeforeEachCallback, AfterEachCallback {
             }
         }
     }
+
     @Override
     public void afterEach(ExtensionContext extensionContext) throws Exception {
         if (androidDriver != null) {

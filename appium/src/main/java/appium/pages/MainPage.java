@@ -1,5 +1,8 @@
 package appium.pages;
 
+import appium.data.category.App;
+import appium.data.category.Main;
+import appium.data.category.Views;
 import appium.pages.app.AppPages;
 import appium.pages.views.ViewsPage;
 import io.appium.java_client.android.AndroidDriver;
@@ -8,7 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class MainPage extends AbsBasePage {
 
@@ -22,11 +27,9 @@ public class MainPage extends AbsBasePage {
     @FindBy(id = "android:id/list")
     private WebElement listMainMenu;
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc=\"App\"]")
-    private WebElement appCategory;
-
-    @FindBy(xpath = "//android.widget.TextView[@content-desc=\"Views\"]")
-    private WebElement viewsCategory;
+    public WebElement getWebElementCategory(String category) {
+        return androidDriver.findElement(By.xpath(String.format("//android.widget.TextView[@content-desc='%s']", category)));
+    }
 
     public MainPage visibleMainScreen() {
         Assertions.assertTrue(isElementVisible(By.id("android:id/content")), "Главный экран не отобразился. Приложение не загрузилось.");
@@ -34,7 +37,8 @@ public class MainPage extends AbsBasePage {
     }
 
     public MainPage checkListCategoryMainPage() {
-        getListMainMenu(listCategoryMainPage());
+        List<String> list = Arrays.stream(Main.values()).map(Main::getCategory).collect(Collectors.toList());
+        getListMainMenu(list);
         return this;
     }
 
@@ -51,49 +55,16 @@ public class MainPage extends AbsBasePage {
     }
 
     public AppPages goAppPage() {
-        appCategory.click();
-        getListMainMenu(listCategoryAppPage());
+        getWebElementCategory(Main.APP.getCategory()).click();
+        List<String> list = Arrays.stream(App.values()).map(App::getApp).collect(Collectors.toList());
+        getListMainMenu(list);
         return new AppPages(androidDriver);
     }
 
     public ViewsPage goViewsPage() {
-        viewsCategory.click();
+        getWebElementCategory(Main.VIEWS.getCategory()).click();
+        List<String> list = Arrays.stream(Views.values()).map(Views::getCategory).collect(Collectors.toList());
+        getListMainMenu(list);
         return new ViewsPage(androidDriver);
-    }
-
-    private List<String> listCategoryAppPage() {
-        return List.of(
-                "Action Bar",
-                "Activity",
-                "Alarm",
-                "Alert Dialogs",
-                "Device Admin",
-                "Fragment",
-                "Launcher Shortcuts",
-                "Loader",
-                "Menu",
-                "Notification",
-                "Search",
-                "Service",
-                "Text-To-Speech",
-                "Voice Recognition"
-        );
-    }
-
-    private List<String> listCategoryMainPage() {
-        return List.of(
-                "Access'ibility",
-                "Accessibility",
-                "Animation",
-                "App",
-                "Content",
-                "Graphics",
-                "Media",
-                "NFC",
-                "OS",
-                "Preference",
-                "Text",
-                "Views"
-        );
     }
 }

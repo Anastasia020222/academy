@@ -1,8 +1,10 @@
 package appium.pages;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -27,5 +29,11 @@ public abstract class AbsBasePage {
         } catch (TimeoutException e) {
             return false;
         }
+    }
+
+    public WebElement scrollToElementByDescription(String description) {
+        return androidDriver.findElement(AppiumBy.androidUIAutomator(
+                "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView("
+                + "new UiSelector().description(\"" + description + "\"))"));
     }
 }

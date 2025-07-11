@@ -14,16 +14,16 @@ public class MenuPage extends AbsBasePage {
         super(androidDriver);
     }
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc=\"Inflate from XML\"]")
+    @FindBy(xpath = "//android.widget.ListView[@resource-id='android:id/list']//android.widget.TextView[@resource-id='android:id/text1']")
     private WebElement inflateFromXML;
 
-    @FindBy(xpath = "//android.widget.TextView[@text=\"If you want to choose another menu resource, go back and re-run this activity.\"]")
+    @FindBy(xpath = "//android.widget.LinearLayout[@index=0]//android.widget.TextView[@index=1]")
     private WebElement textMenuPage;
 
-    @FindBy(xpath = "//android.widget.TextView[@resource-id=\"android:id/text1\"]")
+    @FindBy(xpath = "//android.widget.TextView[@resource-id='android:id/text1']")
     private WebElement selectField;
 
-    @FindBy(xpath = "//android.widget.CheckedTextView[@resource-id=\"android:id/text1\" and @text=\"Visible\"]")
+    @FindBy(xpath = "//android.widget.CheckedTextView[@resource-id='android:id/text1' and @text='Visible']")
     private WebElement option;
 
     @FindBy(xpath = "//android.widget.ListView")

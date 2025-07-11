@@ -16,25 +16,24 @@ public class StatusBar extends AbsBasePage {
         super(androidDriver);
     }
 
-    @FindBy(xpath = "//android.widget.TextView[@content-desc=\"Icons only\"]")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc='Icons only']")
     private WebElement iconsOnly;
 
-    @FindBy(xpath = "(//android.widget.FrameLayout[@resource-id=\"android:id/status_bar_latest_event_content\"])[1]")
+    @FindBy(xpath = "(//android.widget.FrameLayout[@resource-id='android:id/status_bar_latest_event_content'])[1]")
     private WebElement statusBarEvent;
 
-    @FindBy(xpath = "//android.widget.LinearLayout[@resource-id=\"com.android.permissioncontroller:id/grant_dialog\"]")
+    @FindBy(xpath = "//android.widget.LinearLayout[@resource-id='com.android.permissioncontroller:id/grant_dialog']")
     private WebElement dialogWindow;
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"com.android.permissioncontroller:id/permission_allow_button\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='com.android.permissioncontroller:id/permission_allow_button']")
     private WebElement buttonAllowDialog;
 
-    @FindBy(xpath = "//android.widget.Button[@resource-id=\"io.appium.android.apis:id/happy\"]")
+    @FindBy(xpath = "//android.widget.Button[@resource-id='io.appium.android.apis:id/happy']")
     private WebElement iconsOnlyHappy;
 
     public WebElement iconsOnly(String type) {
-        return androidDriver.findElement(By.xpath(String.format("//android.widget.Button[@resource-id=\"io.appium.android.apis:id/%s\"]", type)));
+        return androidDriver.findElement(By.xpath(String.format("//android.widget.Button[@resource-id='io.appium.android.apis:id/%s']", type)));
     }
-
 
     public StatusBar checkVisibleIconsOnly(String type, String title) {
         String nameIconsOnly = iconsOnly.getText();
@@ -48,11 +47,11 @@ public class StatusBar extends AbsBasePage {
 
         androidDriver.openNotifications();
 
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//android.widget.FrameLayout[@resource-id=\"com.android.systemui:id/expandableNotificationRow\"])[1]")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//android.widget.FrameLayout[@resource-id='com.android.systemui:id/expandableNotificationRow'])[1]")));
 
-        String nameEvent = statusBarEvent.findElement(By.xpath("//android.widget.TextView[@resource-id=\"android:id/app_name_text\" and @text=\"API Demos\"]")).getText();
-        String titleEvent = statusBarEvent.findElement(By.xpath(String.format("//android.widget.TextView[@resource-id=\"android:id/title\" and @text=\"%s\"]", title))).getText();
-        String descriptionEvent = statusBarEvent.findElement(By.xpath(String.format("//android.widget.TextView[@resource-id=\"android:id/text\" and @text=\"%s\"]", description))).getText();
+        String nameEvent = statusBarEvent.findElement(By.xpath("//android.widget.TextView[@resource-id='android:id/app_name_text' and @text='API Demos']")).getText();
+        String titleEvent = statusBarEvent.findElement(By.xpath(String.format("//android.widget.TextView[@resource-id='android:id/title' and @text='%s']", title))).getText();
+        String descriptionEvent = statusBarEvent.findElement(By.xpath(String.format("//android.widget.TextView[@resource-id='android:id/text' and @text='%s']", description))).getText();
 
         assertEquals(nameEvent, "API Demos", "Название приложения на уведомлении не соответствует API Demos");
         assertEquals(titleEvent, title, "Название уведомления не соответствует " + title);
@@ -67,5 +66,4 @@ public class StatusBar extends AbsBasePage {
         buttonAllowDialog.click();
         return this;
     }
-
 }

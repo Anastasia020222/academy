@@ -1,4 +1,4 @@
-import appium.Driver;
+import appium.manager.Driver;
 import appium.extension.AndroidExtension;
 import appium.pages.MainPage;
 import io.appium.java_client.android.AndroidDriver;
@@ -15,7 +15,7 @@ public class AndroidTest {
     private AndroidDriver androidDriver;
 
     @Test
-    @DisplayName("Запуск приложения. Проверяет отображение главного экрана")
+    @DisplayName("Запуск приложения. Отображение главного экрана")
     void testMainScreen() {
         new MainPage(androidDriver)
                 .visibleMainScreen()
@@ -23,7 +23,19 @@ public class AndroidTest {
     }
 
     @Test
-    @DisplayName("Проверяем, что в popup menu можно выбрать категорию 'Add'")
+    @DisplayName("Взаимодействие с WebView. Отображение WebView")
+    void testWebView() {
+        new MainPage(androidDriver)
+                .goViewsPage()
+                .goWebView()
+                .checkTitle()
+                .checkDescription()
+                .checkField()
+                .focusedField();
+    }
+
+    @Test
+    @DisplayName("Выбор категории 'Add' в Popup Menu")
     void testCategoryNavigation() {
         new MainPage(androidDriver)
                 .goViewsPage()
@@ -32,7 +44,7 @@ public class AndroidTest {
                 .selectOptionAdd();
     }
 
-    @ParameterizedTest(name = "Проверка уведомлений из списка Icons Only: {0}")
+    @ParameterizedTest(name = "Нотификации из списка Icons Only: {0}")
     @MethodSource("appium.data.StatusBarData#statusBarNoty")
     void testNotifications(String type, String title, String description) {
         new MainPage(androidDriver)
@@ -45,7 +57,7 @@ public class AndroidTest {
                 .checkNotificationHappy(type, title, description);
     }
 
-    @ParameterizedTest(name = "Проверка диалогового окна List Dialog {0}")
+    @ParameterizedTest(name = "Диалоговые окна List Dialog: {0}")
     @MethodSource("appium.data.StatusBarData#listDialogs")
     void testAlertDialogs(String command, String text) {
         new MainPage(androidDriver)
@@ -56,7 +68,7 @@ public class AndroidTest {
     }
 
     @Test
-    @DisplayName("Проверка выпадающего меню. Выбор варианта Visible")
+    @DisplayName("Выпадающее меню. Выбор варианта Visible")
     void testContextMenu() {
         new MainPage(androidDriver)
                 .goAppPage()
